@@ -2,7 +2,7 @@
 
 Браузерная логическая игра в домино (4×4) против ИИ. Выкладывайте костяшки, совпадайте цифрами и набирайте очки.
 
-**[🎮 Играть в демо](https://andreybond77.github.io/dominoes-quattro/)** · **[📂 Исходный код](https://github.com/andreybond77/dominoes-quattro)**
+**[🎮 Играть в демо](https://andreybond77.github.io/Dominoes_Quattro /)** · **[📂 Исходный код](https://github.com/andreybond77/dominoes-quattro)**
 
 ---
 
