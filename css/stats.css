@@ -1,0 +1,171 @@
+/* ============================================================
+   DOMINOES-QUATTRO — СТАТИСТИКА
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.page-container {
+    max-width: 560px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-back-menu {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: #fff;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-back-menu:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(244, 67, 54, 0.4);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-align: center;
+}
+
+.stat-card .label {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.stat-card .value {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.stat-card.player .value { color: #7EC8FF; }
+.stat-card.computer .value { color: #FFB266; }
+.stat-card.total .value { color: #FFD700; }
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stat-row .label {
+    color: #cfd0e0;
+    font-size: 15px;
+}
+
+.stat-row .value {
+    font-size: 17px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.stat-row .value.player { color: #7EC8FF; }
+.stat-row .value.computer { color: #FFB266; }
+
+.section-title {
+    color: #FFD700;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.btn-action {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(135deg, #3a3a5c, #2a2a4a);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.btn-action:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+.btn-action.btn-reset {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+}
+
+.btn-action.btn-reset:hover {
+    box-shadow: 0 0 25px rgba(244, 67, 54, 0.4);
+}

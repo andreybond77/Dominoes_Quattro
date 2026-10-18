@@ -1,0 +1,107 @@
+/* ============================================================
+   DOMINOES-QUATTRO — ПРАВИЛА
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.page-container {
+    max-width: 700px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 20px;
+    padding: 30px 35px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-back-menu {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: #fff;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-back-menu:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(244, 67, 54, 0.4);
+}
+
+.rules-section {
+    margin-bottom: 22px;
+}
+
+.rules-section h2 {
+    color: #FFD700;
+    font-size: 18px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.rules-section p,
+.rules-section li {
+    color: #cfd0e0;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.rules-section ul {
+    padding-left: 22px;
+    margin-top: 6px;
+}
+
+.rules-section li {
+    margin-bottom: 4px;
+}
+
+.rules-section .highlight {
+    color: #7EC8FF;
+    font-weight: 600;
+}
+
+.rules-section .highlight-orange {
+    color: #FFB266;
+    font-weight: 600;
+}

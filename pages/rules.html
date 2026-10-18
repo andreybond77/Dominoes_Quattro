@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Dominoes-Quattro — Правила</title>
+    <link rel="stylesheet" href="../css/rules.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="page-header">
+            <h1 class="page-title">Правила</h1>
+            <button class="btn-back-menu" id="backBtn">✕</button>
+        </div>
+
+        <div class="rules-section">
+            <h2>🎯 Цель игры</h2>
+            <p>Набрать больше очков, чем компьютер, выкладывая костяшки на игровое поле.</p>        
+            <ul>
+                <li>Активная костяшка — в <span class="highlight">центре карусели</span>.</li>
+                <li>Кнопками <span class="highlight">◀ ▶</span> можно листать костяшки по кругу.</li>
+                <li>Кнопками <span class="highlight">↺ ↻</span> можно поворачивать активную костяшку.</li>
+                <li>Кнопка <span class="highlight">+</span> — взять костяшку из колоды.</li>
+                <li>Клик по полю — поставить костяшку в выбранное место.</li>
+         
+                <li>Костяшку можно поставить только туда, где есть <span class="highlight">хотя бы одно совпадение</span> цифр с соседними костяшками.</li>
+               
+                <li>Все касания костяшки должны совпадать по цифрам.</li>
+                <li>Нельзя ставить костяшку на жёлтые квадраты.</li>
+                
+         
+                        <li>1 совпадение → <span class="highlight">+1 очко</span></li>
+                        <li>2 совпадения → <span class="highlight">+2 очка</span></li>
+                        <li>3 совпадения → <span class="highlight">+3 очка</span></li>
+                        <li>4 совпадения → <span class="highlight">+4 очка</span></li>
+         
+                <li>Выигрывает тот, кто <span class="highlight">выложил все костяшки</span>.</li>
+                <li>Если оба выложили все костяшки одновременно — побеждает тот, у кого <span class="highlight">больше очков</span>.</li>
+                
+            </ul>
+        </div>
+    </div>
+
+    <script src="../js/rules.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+/* ============================================================
+   DOMINOES-QUATTRO — СТАРТОВАЯ СТРАНИЦА
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background: #1a1a2e;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Flex-контейнер стартового экрана — КАРТИНКА КАК ФОН */
+.start-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;   /* текст и кнопка — ближе к низу */
+    align-items: center;
+
+    width: 100%;
+    max-width: 900px;
+    height: 90vh;
+    padding: 40px 30px;
+
+    /* ← Картинка на весь контейнер + затемнение снизу для читаемости */
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.25) 40%,
+            rgba(0, 0, 0, 0.75) 100%
+        ),
+        url('../imag/background.png') center/cover no-repeat;
+
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+
+    animation: fadeIn 0.8s ease;
+
+    gap: 15px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.start-title {
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-align: center;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 20px rgba(255, 165, 0, 0.3);
+}
+
+.start-subtitle {
+    color: #e0e0f0;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.btn-menu {
+    padding: 18px 70px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 14px;
+
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+
+    cursor: pointer;
+    transition: all 0.3s;
+
+    background: linear-gradient(135deg, #4CAF50, #2e7d32);
+    box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+}
+
+.btn-menu:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(76, 175, 80, 0.7);
+}
+
+.btn-menu:active {
+    transform: scale(0.98);
+}
+
+/* ===== АДАПТИВНОСТЬ ===== */
+
+@media (max-width: 850px) {
+    .start-container {
+        height: 92vh;
+        max-width: 95%;
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    .start-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 550px) {
+    .start-container {
+        height: 95vh;
+        padding: 25px 15px;
+        border-radius: 16px;
+    }
+
+    .start-title {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    .start-subtitle {
+        font-size: 12px;
+    }
+
+    .btn-menu {
+        padding: 15px 50px;
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 380px) {
+    .start-title {
+        font-size: 22px;
+    }
+
+    .btn-menu {
+        padding: 13px 40px;
+        font-size: 15px;
+    }
+}

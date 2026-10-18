@@ -1,0 +1,121 @@
+/* ============================================================
+   DOMINOES-QUATTRO — СЛОЖНОСТЬ
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.page-container {
+    max-width: 480px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-back-menu {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: #fff;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-back-menu:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(244, 67, 54, 0.4);
+}
+
+.difficulty-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.difficulty-card {
+    padding: 20px 25px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: linear-gradient(135deg, #3a3a5c, #2a2a4a);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    position: relative;
+}
+
+.difficulty-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+.difficulty-card.active {
+    border-color: #FFD700;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+}
+
+.difficulty-card.active::after {
+    content: '✓';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #FFD700;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.difficulty-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.difficulty-desc {
+    font-size: 14px;
+    color: #b0b0c0;
+    line-height: 1.4;
+}
+
+.difficulty-card.easy .difficulty-name { color: #7EC8FF; }
+.difficulty-card.medium .difficulty-name { color: #FFD700; }
+.difficulty-card.hard .difficulty-name { color: #FFB266; }

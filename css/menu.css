@@ -1,0 +1,76 @@
+/* ============================================================
+   DOMINOES-QUATTRO — МЕНЮ
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.menu-container {
+    max-width: 420px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.menu-title {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-btn {
+    padding: 18px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: linear-gradient(135deg, #3a3a5c, #2a2a4a);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 1px;
+}
+
+.menu-btn:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+.menu-btn.btn-play {
+    background: linear-gradient(135deg, #4CAF50, #2e7d32);
+}
+
+.menu-btn.btn-play:hover {
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.5);
+}

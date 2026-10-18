@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Dominoes-Quattro — Статистика</title>
+    <link rel="stylesheet" href="../css/stats.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="page-header">
+            <button class="btn-back-menu" id="resetBtn">🗑 </button>
+            <h1 class="page-title"> Статистика</h1>
+            <button class="btn-back-menu" id="backBtn">✕</button>
+        </div>
+
+        <div class="section-title">🏆 Победы</div>
+        <div class="stats-grid">
+            <div class="stat-card player">
+                <div class="label">Побед игрока</div>
+                <div class="value" id="playerWins">0</div>
+            </div>
+            <div class="stat-card computer">
+                <div class="label">Побед компьютера</div>
+                <div class="value" id="computerWins">0</div>
+            </div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card total">
+                <div class="label">Ничьих</div>
+                <div class="value" id="draws">0</div>
+            </div>
+            <div class="stat-card total">
+                <div class="label">Всего игр</div>
+                <div class="value" id="totalGames">0</div>
+            </div>
+        </div>
+
+       
+    </div>
+
+    <script src="../js/stats.js"></script>
+</body>
+</html>
