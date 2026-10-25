@@ -218,7 +218,7 @@ function showMessage(text) {
 // ============================================================
 
 let CELL_SIZE = 29;
-let TILE_SIZE = 64;
+let TILE_SIZE = 58;   // ← ровно 2*CELL
 let YELLOW_SIZE = 25;
 
 let board = [];
@@ -258,21 +258,18 @@ let currentDifficulty = 'medium';
 
 function getSizes() {
     const width = window.innerWidth;
-    const gap = 2;
-    const border = 2;
-    const extra = gap + border * 2;   // 6
     let tileSize, cellSize, yellowSize;
 
     if (width <= 420) {
-        cellSize = 13; tileSize = cellSize * 2 + extra; yellowSize = cellSize - 1;
+        cellSize = 13; tileSize = cellSize * 2; yellowSize = cellSize - 1;
     } else if (width <= 550) {
-        cellSize = 15; tileSize = cellSize * 2 + extra; yellowSize = cellSize - 2;
+        cellSize = 15; tileSize = cellSize * 2; yellowSize = cellSize - 2;
     } else if (width <= 700) {
-        cellSize = 18; tileSize = cellSize * 2 + extra; yellowSize = cellSize - 3;
+        cellSize = 18; tileSize = cellSize * 2; yellowSize = cellSize - 3;
     } else if (width <= 850) {
-        cellSize = 23; tileSize = cellSize * 2 + extra; yellowSize = cellSize - 4;
+        cellSize = 23; tileSize = cellSize * 2; yellowSize = cellSize - 4;
     } else {
-        cellSize = 29; tileSize = cellSize * 2 + extra; yellowSize = cellSize - 4;
+        cellSize = 29; tileSize = cellSize * 2; yellowSize = cellSize - 4;
     }
 
     return { tileSize, cellSize, yellowSize };
@@ -803,6 +800,20 @@ function findComputerMove() {
 // ХОДЫ
 // ============================================================
 
+// ← Автопереход к следующей непустой костяшке после хода
+function advanceToNextNonEmptyTile(fromIndex) {
+    if (playerHand.length === 0) return;
+    let idx = fromIndex;
+    for (let i = 0; i < playerHand.length; i++) {
+        idx = (idx + 1) % playerHand.length;
+        if (playerHand[idx] !== null && playerHand[idx] !== undefined) {
+            selectedTileIndex = idx;
+            currentRotation = 0;
+            return;
+        }
+    }
+}
+
 function handlePlayerTurn(pos, rotatedTile) {
     const placeResult = placeTileWithScore(pos, rotatedTile, false);
     if (!placeResult.success) {
@@ -815,6 +826,10 @@ function handlePlayerTurn(pos, rotatedTile) {
     if (selectedTileIndex >= 0 && selectedTileIndex < playerHand.length) {
         playerHand[selectedTileIndex] = null;
     }
+
+    // ← Автопереход к следующей непустой костяшке,
+    //   чтобы не было «поставил → слот пуст → не могу поставить»
+    advanceToNextNonEmptyTile(selectedTileIndex);
 
     currentRotation = 0;
     hoverPos = null;
