@@ -18,6 +18,9 @@ let dragScrollTop = 0;
 const VISIBLE_COUNT = 7;
 const CENTER_INDEX = 3;
 
+// ← Порог drag: если мышь сдвинулась меньше — это КЛИК, а не перетаскивание.
+const DRAG_THRESHOLD = 10;
+
 // ============================================================
 // ОТРИСОВКА ТОЧЕК
 // ============================================================
@@ -48,17 +51,25 @@ function renderTileContent(values) {
 // РАЗМЕРЫ КОСТЯШКИ
 // ============================================================
 
+// Костяшка ровно 2×2 клетки.
+// Внутри — padding, чтобы между соседними костяшками был визуальный зазор.
+// Позиционирование (left/top) и логика (getTileCells, DIRECTIONS) НЕ меняются,
+// т.к. TILE_SIZE = 2*CELL остаётся неизменным.
 function applyTileSizes(el) {
-    const gap = 2;
-    const border = 2;
     const cell = CELL_SIZE;
-    const total = cell * 2 + gap + border * 2;
+    const gap = 2;
+    const padding = 2;                       // ← отступ от края костяшки
+    const total = cell * 2;                  // ← размер костяшки (ровно 2 клетки)
+    const inner = cell - padding - gap / 2;  // ← внутренняя клетка
 
     el.style.width = total + 'px';
     el.style.height = total + 'px';
-    el.style.gridTemplateColumns = cell + 'px ' + cell + 'px';
-    el.style.gridTemplateRows = cell + 'px ' + cell + 'px';
+    el.style.gridTemplateColumns = inner + 'px ' + inner + 'px';
+    el.style.gridTemplateRows = inner + 'px ' + inner + 'px';
     el.style.gap = gap + 'px';
+    el.style.padding = padding + 'px';       // ← ВАЖНО: box-sizing: border-box → padding входит в total
+    el.style.boxSizing = 'border-box';
+    el.style.border = 'none';
 }
 
 function applySliderHeight() {
@@ -317,7 +328,6 @@ function newGame() {
     updateUI();
     updateScoreDisplay();
 
-    // ← Прокрутка в центр после отрисовки
     setTimeout(() => {
         centerBoardView();
         computerTurn();
@@ -405,7 +415,6 @@ function initEvents() {
     const wrapper = document.querySelector('.board-wrapper');
     if (wrapper) {
         wrapper.addEventListener('mousedown', (e) => {
-            // Игнорируем клики по костяшкам и кнопкам
             if (e.button !== 0) return;
             isDragging = true;
             dragMoved = false;
@@ -420,19 +429,20 @@ function initEvents() {
             const dx = e.clientX - dragStartX;
             const dy = e.clientY - dragStartY;
 
-            if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+            if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
                 dragMoved = true;
             }
 
-            wrapper.scrollLeft = dragScrollLeft - dx;
-            wrapper.scrollTop = dragScrollTop - dy;
+            if (dragMoved) {
+                wrapper.scrollLeft = dragScrollLeft - dx;
+                wrapper.scrollTop = dragScrollTop - dy;
+            }
         });
 
         window.addEventListener('mouseup', () => {
             isDragging = false;
         });
 
-        // Тач-события для мобильных
         wrapper.addEventListener('touchstart', (e) => {
             if (e.touches.length !== 1) return;
             isDragging = true;
@@ -448,12 +458,14 @@ function initEvents() {
             const dx = e.touches[0].clientX - dragStartX;
             const dy = e.touches[0].clientY - dragStartY;
 
-            if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+            if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
                 dragMoved = true;
             }
 
-            wrapper.scrollLeft = dragScrollLeft - dx;
-            wrapper.scrollTop = dragScrollTop - dy;
+            if (dragMoved) {
+                wrapper.scrollLeft = dragScrollLeft - dx;
+                wrapper.scrollTop = dragScrollTop - dy;
+            }
         }, { passive: true });
 
         wrapper.addEventListener('touchend', () => {
@@ -480,14 +492,20 @@ function initEvents() {
 
     // ───── Клик по полю ─────
     boardEl.addEventListener('click', function(e) {
-        // ← Если было перетаскивание — игнорируем клик
         if (dragMoved) {
             dragMoved = false;
             return;
         }
 
-        if (isComputerTurn) { showMessage('⏳ Сейчас ход компьютера!'); playSound('error'); return; }
-        if (isGameOver) { showMessage('🏁 Игра окончена!'); return; }
+        if (isComputerTurn) {
+            showMessage('⏳ Сейчас ход компьютера!');
+            playSound('error');
+            return;
+        }
+        if (isGameOver) {
+            showMessage('🏁 Игра окончена!');
+            return;
+        }
 
         const activeTile = playerHand[selectedTileIndex];
         if (activeTile === null || activeTile === undefined) {
